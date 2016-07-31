@@ -1,0 +1,34 @@
+---
+# This playbook deploy the CI server on an Ubuntu host
+
+# Bootstrap Python 2
+# - hosts: all
+#   sudo: True
+#   roles:
+#   - role: bootstrap-python
+#   tags:
+#   - bootstrap
+
+# Install GitLab 
+- hosts: all
+  sudo: True
+  roles:
+  - role: install-gitlab-ce
+  tags:
+  - gitlab
+
+# Install Docker daemon
+- hosts: all
+  sudo: True
+  roles:
+  - role: install-docker-daemon
+  tags:
+  - docker
+
+# Install Docker Compose
+- hosts: all
+  sudo: True
+  roles:
+  - role: install-docker-compose
+  tags:
+  - compose

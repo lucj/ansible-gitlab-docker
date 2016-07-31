@@ -1,0 +1,21 @@
+---
+- name: GitLab | Update cache
+  ignore_errors: yes 
+  apt: update_cache=yes
+
+- name: GitLab | Install prerequisites
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - curl
+    - openssh-server
+    - ca-certificates
+    - postfix
+
+- name: GitLab | Install package server
+  shell: curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash
+
+- name: GitLab | Installation
+  apt: name=gitlab-ce
+
+- name: GitLab | Reconfigure
+  shell: gitlab-ctl reconfigure
