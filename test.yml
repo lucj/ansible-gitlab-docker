@@ -1,8 +1,0 @@
----
-- hosts: TBD
-  remote_user: TBD
-  sudo: True
-  tasks:
-  - name: purpose
-    ...
-

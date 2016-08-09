@@ -17,5 +17,8 @@
 - name: GitLab | Installation
   apt: name=gitlab-ce
 
+- name: GitLab | copy configuration file
+  template: src=gitlab.j2 dest=/etc/gitlab/gitlab.rb
+
 - name: GitLab | Reconfigure
   shell: gitlab-ctl reconfigure

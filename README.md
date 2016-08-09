@@ -1,7 +1,7 @@
 Deployment of a ci server
 -------------------------
 
-This playbook setup a CI server containing
+This playbook setup a Ubuntu (14.04 / 16.04) host containing
 * GitLab
 * Docker
 * Docker Compose
@@ -9,7 +9,8 @@ This playbook setup a CI server containing
 Inventory
 ---------
 
-The inventory/ENVIRONMENT.ini file defines the host the server needs to be deployed on
+The inventory.ini file defines the host the server needs to be deployed on
+Next to the host's ip, the external_url parameter needs to be set, this indicates to GitLab the url it must send the http requests to.
 
 Running option
 --------------
@@ -37,10 +38,6 @@ Note: both user's ssh password + sudo password will be requested
 * user provided with a ssh key added to its authorized_keys
 
    ```ansible-playbook -i inventory.ini -u USER --private-key PATH_TO_KEY -s main.yml```
-
-* root access provided through an ssh key (no need to enter a password)
-
-  ```ansible-playbook -i inventory.ini -u root -s main.yml```
 
 Note: this option is usefull in the case where a ssh key is used when creating the host (AWS, DO, ...)
 

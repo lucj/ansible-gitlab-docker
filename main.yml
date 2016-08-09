@@ -1,13 +1,14 @@
 ---
-# This playbook deploy the CI server on an Ubuntu host
+# This playbook deploy the CI server on an Ubuntu host (14.04 / 16.04)
 
 # Bootstrap Python 2
-# - hosts: all
-#   sudo: True
-#   roles:
-#   - role: bootstrap-python
-#   tags:
-#   - bootstrap
+- hosts: all
+  sudo: True
+  gather_facts: no
+  roles:
+  - role: bootstrap-python
+  tags:
+  - bootstrap
 
 # Install GitLab 
 - hosts: all
